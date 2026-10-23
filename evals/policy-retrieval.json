@@ -1,0 +1,14 @@
+[
+  {"query": "My transfer says successful but the recipient has not received the money", "expected": "transfers-not-received"},
+  {"query": "I sent money to the wrong account. Can I get it back?", "expected": "transfers-wrong-account"},
+  {"query": "How can I remove a saved recipient?", "expected": "transfers-beneficiaries"},
+  {"query": "My debit card was stolen, what should I do?", "expected": "cards-lost-stolen"},
+  {"query": "How do I change my weekly card spending limit?", "expected": "cards-limits"},
+  {"query": "Can I dispute a card transaction from five months ago?", "expected": "cards-disputes"},
+  {"query": "I operate a POS. A payment failed but my customer was debited", "expected": "pos-failed-debit"},
+  {"query": "The card transfer withdrawal worked but the onward transfer failed", "expected": "pos-partial-transfer"},
+  {"query": "Which transactions can trigger Save As You Transact contributions?", "expected": "sayt-overview"},
+  {"query": "How do I start a Save As You Transact plan?", "expected": "sayt-create-plan"},
+  {"query": "Can I pause my automatic savings?", "expected": "sayt-manage-plan"},
+  {"query": "How do I withdraw money already saved in SAYT?", "expected": "sayt-withdrawals"}
+]

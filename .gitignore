@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+*.egg-info/
+.local/
+
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+.playwright-cli/
+
+# Local credentials and generated presentation / rehearsal material.
+.env.*
+!.env.example
+.DS_Store
+*.log
+slides/
+evals/*
+!evals/policy-retrieval.json
+
+# Working notes from the local build, not release documentation.
+docs/superpowers/

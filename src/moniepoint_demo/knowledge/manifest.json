@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sayt-overview",
+    "filename": "sayt/overview.md",
+    "title": "Understanding Save As You Transact (SAYT)",
+    "source_url": "https://support.moniepoint.com/topics/savings-198/what-is-save-as-you-transact-sayt-360",
+    "retrieved_on": "2026-10-21",
+    "scope": "SAYT v1 and v2; personal and business availability differs by version"
+  },
+  {
+    "id": "sayt-create-plan",
+    "filename": "sayt/create-plan.md",
+    "title": "Creating a SAYT savings plan",
+    "source_url": "https://support.moniepoint.com/topics/savings-198/how-to-create-a-sayt-plan-361",
+    "retrieved_on": "2026-10-21",
+    "scope": "SAYT app setup; version unspecified in source"
+  },
+  {
+    "id": "sayt-manage-plan",
+    "filename": "sayt/manage-plan.md",
+    "title": "Managing an existing SAYT plan",
+    "source_url": "https://support.moniepoint.com/topics/savings-198/managing-your-sayt-plan-362",
+    "retrieved_on": "2026-10-21",
+    "scope": "SAYT plan management; version unspecified in source"
+  },
+  {
+    "id": "sayt-withdrawals",
+    "filename": "sayt/withdrawals.md",
+    "title": "Withdrawing from a SAYT plan",
+    "source_url": "https://support.moniepoint.com/topics/savings-198/withdrawing-funds-from-sayt-363",
+    "retrieved_on": "2026-10-21",
+    "scope": "SAYT withdrawal procedure; version unspecified in source"
+  },
+  {
+    "id": "transfers-not-received",
+    "filename": "transfers/not-received.md",
+    "title": "Successful transfer not received by the beneficiary",
+    "source_url": "https://support.moniepoint.com/topics/transfers-233/i-did-a-successful-transfer-but-the-beneficiary-is-yet-to-receive-the-funds-421",
+    "retrieved_on": "2026-10-21",
+    "scope": "Outward transfer reported successful; beneficiary has not received funds"
+  },
+  {
+    "id": "transfers-wrong-account",
+    "filename": "transfers/wrong-account.md",
+    "title": "Money transferred to the wrong account",
+    "source_url": "https://support.moniepoint.com/topics/transfers-233/i-mistakenly-sent-money-into-the-wrong-account-please-help-me-419",
+    "retrieved_on": "2026-10-21",
+    "scope": "Mistaken recipient on a transfer; possible recall rather than automatic reversal"
+  },
+  {
+    "id": "transfers-beneficiaries",
+    "filename": "transfers/beneficiaries.md",
+    "title": "Adding and removing saved transfer beneficiaries",
+    "source_url": "https://support.moniepoint.com/topics/transfers-233/how-to-add-a-beneficiary-423",
+    "retrieved_on": "2026-10-21",
+    "scope": "Saved recipient management in the app; not reversal of an existing payment"
+  },
+  {
+    "id": "cards-lost-stolen",
+    "filename": "cards/lost-stolen.md",
+    "title": "Lost or stolen Moniepoint card",
+    "source_url": "https://support.moniepoint.com/topics/moniepoint-cards-223/what-should-i-do-if-my-card-is-lost-or-stolen-271",
+    "retrieved_on": "2026-10-21",
+    "scope": "Moniepoint cardholder; lost or stolen card and replacement"
+  },
+  {
+    "id": "cards-limits",
+    "filename": "cards/limits.md",
+    "title": "Changing Moniepoint card spending limits",
+    "source_url": "https://support.moniepoint.com/topics/moniepoint-cards-223/how-do-i-increase-my-card-transaction-limit-559",
+    "retrieved_on": "2026-10-21",
+    "scope": "Changing card settings in the app; not account transfer limits"
+  },
+  {
+    "id": "cards-disputes",
+    "filename": "cards/disputes.md",
+    "title": "Reporting a Moniepoint card transaction dispute",
+    "source_url": "https://support.moniepoint.com/topics/moniepoint-cards-223/what-is-a-card-transaction-dispute-549",
+    "retrieved_on": "2026-10-21",
+    "scope": "Cardholder dispute reporting and documented filing window"
+  },
+  {
+    "id": "pos-failed-debit",
+    "filename": "pos/failed-debit.md",
+    "title": "Failed POS payment or withdrawal with customer debited",
+    "source_url": "https://support.moniepoint.com/topics/pos-terminals-226/withdrawal-card-payment-failed-customer-debited-what-do-i-do-339",
+    "retrieved_on": "2026-10-21",
+    "scope": "POS operator assisting a debited customer after a failed card payment or withdrawal"
+  },
+  {
+    "id": "pos-partial-transfer",
+    "filename": "pos/partial-transfer.md",
+    "title": "Card transfer withdrawal succeeds but onward transfer fails",
+    "source_url": "https://support.moniepoint.com/topics/pos-terminals-226/i-did-a-card-transfer-the-withdrawal-was-successful-but-the-transfer-failed-please-help-342",
+    "retrieved_on": "2026-10-21",
+    "scope": "POS operator; successful withdrawal leg and failed onward transfer leg"
+  }
+]
