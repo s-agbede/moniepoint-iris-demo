@@ -135,6 +135,93 @@ session, and ask the same question. Compare both the tool duration and the time
 beneath the final answer. Cache off bypasses reuse and storage for that session;
 it does not erase existing cache entries.
 
+## Things to try yourself
+
+These are experiments to explore, not scripted replies. Set the switches before
+starting each session, send each quoted message separately, and use **Behind the
+answer** to check what information the assistant actually used.
+
+### Remember a name within the conversation
+
+Turn short-term memory **on**, long-term memory **off**, and cache **off**. Use a
+made-up name that is different from the selected customer's account name:
+
+> Please call me Captain Mango during this conversation.
+
+> What did I ask you to call me?
+
+The assistant should use the name from the conversation. Repeat in a fresh
+session with both memories off to see the difference. Asking for the selected
+customer's account name would be a weaker test because account information can
+come from the backend, even when conversation memory is off.
+
+This tests conversational recall. It does not rename the account or demonstrate
+that personal names are retained in long-term memory after PII filtering.
+
+### Follow up without repeating the transaction details
+
+Choose Ada. Turn short-term memory **on**, long-term memory **off**, and cache
+**off**:
+
+> Please show my recent completed payments.
+
+Choose a payment from the returned list, for example:
+
+> The ₦12,000 transfer. Why didn't that one generate savings?
+
+> Would the same kind of payment generate savings under my current plan?
+
+Watch whether the assistant follows the reference to "that one" and separates
+historical processing from current settings. It should check the transaction,
+processing outcome, savings contributions, and relevant plan details. If several
+payments match, it should clarify which one you mean.
+
+### Return to a transaction in a new conversation
+
+Choose Ada, enable both memories, and leave cache off. Start with:
+
+> My ₦12,000 transfer did not generate savings. Please investigate it.
+
+After the investigation, use **Check extracted observations** and wait until a
+relevant observation appears. Extraction happens in the background; a completed
+reply does not mean a memory is ready yet.
+
+Start a new session for the same customer with long-term memory on, then ask:
+
+> We spoke about missing savings on a transfer earlier. What did we find, and is there anything left to do?
+
+Inspect **Memories used for this answer**. The useful outcome is continuity
+without asking the customer to repeat everything. The assistant should still
+verify current account facts before recommending a change. Compare with a new
+session with long-term memory off: it may investigate again using live records,
+but it should not claim to remember a conversation it was not given.
+
+### Correct something you said earlier
+
+Turn short-term memory **on**, long-term memory **off**, and cache **off**:
+
+> I think the payment I mean was ₦20,000.
+
+> Sorry, I meant the ₦12,000 transfer. Please investigate that one instead.
+
+> Which payment are we discussing now?
+
+Look for the corrected amount and transaction, rather than the first guess.
+Remembering a statement should not make it permanently true.
+
+### Try a similar question with a different meaning
+
+Turn both memories **off**, turn cache **on**, and start a new session:
+
+> What is Save As You Transact and how does it work?
+
+> Does every transfer automatically generate savings, even if transfers are not enabled in my plan?
+
+The second question shares vocabulary with the first but asks about a specific
+condition. Check the cache verdict and policy evidence. The system should only
+reuse an answer if it actually addresses that condition; similarity alone is
+not enough. A cache miss is a useful result when it avoids a misleading answer.
+
 ## What to explain as you present
 
 - **Short-term memory** helps within the current conversation.
