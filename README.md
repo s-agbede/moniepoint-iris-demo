@@ -1,4 +1,4 @@
-# Support that remembers—and checks
+# Support that remembers and checks
 
 A hands-on demonstration of an AI support assistant investigating missing savings,
 remembering earlier conversations, and answering product questions with evidence.
@@ -39,7 +39,7 @@ earlier issue. It must still check what is true now.
 The switches are inside **Demo controls**. They apply when you click **New session**.
 Changing a switch does not change an existing conversation.
 
-**New session means a new conversation—not a new customer.** Account settings,
+**New session starts a new conversation for the same customer.** Account settings,
 existing long-term memories, and shared policy answers remain stored. Turning
 long-term memory off stops recall and recording for that session; it does not
 delete previously stored memories.
@@ -132,7 +132,7 @@ All five start without conversation memories on a new installation. Sessions and
 settings persist when you restart the app. Resetting the simulated account is not
 the same as deleting its memories from Iris.
 
-## What memory can—and cannot—tell you
+## What memory can and cannot tell you
 
 Memory can preserve an observation such as “the customer previously asked about
 missing savings on a transfer.” It is a clue for the next investigation.
