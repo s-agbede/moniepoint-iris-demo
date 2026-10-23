@@ -9,6 +9,13 @@ The customers, payments, and account changes are simulated. No real money moves.
 The product guidance is based on summaries of public Moniepoint help articles;
 the support workflow and service APIs are examples built for this project.
 
+## See the app
+
+Follow the [illustrated walkthrough](docs/walkthrough.md) for screenshots, prompts,
+and an explanation of what to look for at each step.
+
+![Support studio](docs/images/01-start.jpg)
+
 ## The story
 
 A customer says: **“My transfer completed, but I can't see any savings.”**
