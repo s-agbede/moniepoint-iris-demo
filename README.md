@@ -18,19 +18,38 @@ and an explanation of what to look for at each step.
 
 ## The story
 
-A customer says: **“My transfer completed, but I can't see any savings.”**
+**First visit: investigate the missing savings.** A customer says:
+“My transfer completed, but I can't see any savings.” The assistant finds the
+payment, checks the savings plan that applied at the time, inspects processing,
+and checks whether a savings contribution was recorded. It explains what the
+services establish, rather than guessing from the customer's description.
 
-A useful assistant needs more than a plausible answer. It must find the payment,
-check the savings settings that applied at the time, see what processing did,
-and check whether savings were actually recorded.
-
-If a settings change would help, the assistant proposes it. The customer sees
+If a settings change would help, the assistant proposes it. The customer reviews
 an approval card and chooses whether to proceed. The application checks the
 proposal before applying it. An AI response or a remembered claim of consent
 cannot approve a change.
 
-When the customer returns later, memory can help the assistant recognise the
-earlier issue. It must still check what is true now.
+**The customer leaves.** The first conversation ends. With long-term memory
+enabled, the app has recorded redacted events in Iris. In the background, Iris
+extracts useful observations: the issue raised, the verified finding, and any
+confirmed outcome. We inspect the newly extracted memory before continuing.
+A recorded conversation is not yet proof that extraction has finished.
+
+**Later: a new session, the same customer.** Click **New session**, keeping
+long-term memory enabled. The new conversation has none of the first session's
+chat history. The customer asks: “I'm back about the transfer we discussed.
+What did we find, and is there anything left to do?”
+
+The assistant retrieves the relevant observation from the first visit, identifies
+the earlier issue, and checks live services for anything that may have changed.
+It can continue the support conversation without making the customer start from
+scratch. Memory supplies continuity; the services establish the current facts.
+
+For the comparison, start another new session with long-term memory off and ask
+the same follow-up. The assistant may investigate the records again, but it has
+not been given the previous conversation or its extracted observations. The
+[illustrated walkthrough](docs/walkthrough.md#4-investigate-an-earlier-support-issue)
+shows the session break and the evidence to inspect.
 
 ## What you can explore
 

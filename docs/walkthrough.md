@@ -15,8 +15,8 @@ answer** opens the explanation panel on the right.
 ![Support studio before starting a conversation](images/01-start.jpg)
 
 The customer selector changes whose records the assistant can inspect. It is a
-demo control, not a login system. This walkthrough uses Ada and Chidi, leaving the two newer
-customers available for fresh demonstrations.
+demo control, not a login system. This walkthrough uses Ada, Chidi, and Emeka. Existing sessions and memories
+may be present if someone has already tried the demo.
 
 ## 2. Choose what the assistant receives
 
@@ -55,31 +55,112 @@ also does not give it the previous session's conversation.
 
 ## 4. Investigate an earlier support issue
 
-For a customer who already has extracted observations, enable both memories and
-leave cache off. Start a new session. This is the prompt used for Ada:
+This sequence makes the session boundary visible. Use **Emeka**, enable both
+memories, turn cache off, and click **New session**. The captured first session
+is `c36f32b35f0743bead1c649cce458258` (shown as `c36f3` in the selector).
+Emeka already had some older observations, so the proof below is the new memory's
+originating session, not a claim that his entire memory store was empty.
 
-> Can you check that ₦12,000 transfer we discussed earlier? Why did it not generate savings, and does my current plan still exclude transfers?
+### Session A: the customer raises the issue
 
-A new installation will not have Ada's earlier memories. First investigate a
-payment with long-term memory enabled, wait for extraction, and check that an
-observation is available before trying the return visit.
+Send:
 
-The assistant should distinguish the plan at the time of the transfer from the
-plan now. Retrieved memories guide the investigation; service results establish
-current facts. Expand a tool in **Behind the answer** to inspect its evidence.
+> My transfer completed but I cannot see any savings. Please check my recent payments and investigate the completed transfer. I need to explain what happened to my bookkeeper when I return.
 
-![An investigation separates historical settings from the current plan](images/04-investigation.jpg)
+The assistant found two completed transfers and asked which one. Reply:
 
-In this captured run, the earlier transfer was excluded, but the current plan
-already included transfers. The assistant checked five service results and did
-not propose an unnecessary change.
+> The ₦12,000 transfer at 09:10 UTC. Please investigate that one.
 
-![The evidence panel exposes the observations retrieved from Iris](images/05-long-term-memory.jpg)
+![Session A establishes why Emeka's transfer did not generate savings](images/08-session-a.jpg)
 
-**Memories used for this answer** lets you inspect the observations that informed
-the response. **Redacted events recorded in Iris** shows what was sent for later
-extraction. Recording and extraction are separate stages, so a new observation
-may not be available immediately.
+In this run, service checks established that the transfer completed, the plan at
+the time covered card payments only, processing excluded the transfer, and no
+savings contribution was posted. The assistant gave an explanation for the
+customer's bookkeeper. No plan change was requested or applied in this sequence.
+
+### The break: let a new observation become available
+
+Stop sending messages. The customer has left the conversation. Open **Behind the
+answer** and click **Check extracted observations** after the extraction interval.
+Recording events and extracting memories are separate steps; do not move on just
+because the response says that events were recorded.
+
+Look for an observation with Session A's `session_id`. In this run, the new
+customer-report memory was `325a1abfc133495d9016919b9b3a8626`. It captured the missing
+savings report and the request for an explanation for the bookkeeper. This is a
+reported concern, not a verified financial fact. Verified service findings can
+be extracted as separate observations. A second new memory,
+`8ff6743709ae4d4ab4eac5f7f7f6d2da`, records the verified finding about the
+₦12,000 transfer and names `emeka-transfer-001` as its related reference.
+Both observations identify Session A as their source.
+
+![Inspect the extracted observations from the first conversation](images/09-extraction.jpg)
+
+### Session B: return without repeating the details
+
+Click **New session** for Emeka. Do not select the previous conversation from the
+history menu. The empty chat and different session suffix establish the break:
+Session A was `c36f3`; Session B is `9aaba`.
+
+![A separate empty conversation for the same customer](images/10-new-session.jpg)
+
+Send this as the first message in the new session:
+
+> I'm back about the transfer we discussed. What did we find, and what should I tell my bookkeeper?
+
+This message does not repeat the amount, time, transaction ID, or cause of the
+problem. Short-term memory has no earlier messages in this session to supply
+those details. Look for the newly extracted Session A observations under
+**Memories used for this answer**, then inspect any live service checks.
+
+![The follow-up continues the same issue in Session B](images/11-session-b-follow-up.jpg)
+
+In the captured return visit, the assistant identified the ₦12,000 transfer,
+explained the earlier exclusion, and gave the bookkeeper explanation. It also
+called **Get savings contributions** to check the ledger again.
+
+![Session B retrieves a memory whose session_id points to Session A](images/12-session-b-memory-evidence.jpg)
+
+The memory panel contains the new customer report and verified findings from
+Session A. Match the memory ID and originating `session_id`; the number of
+retrieved memories alone does not prove continuity. This is the full sequence:
+first conversation, background extraction, a separate conversation, then recall.
+
+For a comparison, start another session with long-term memory off and ask the
+same return question. The assistant may inspect live records, but should not
+claim access to an earlier conversation that was not supplied.
+
+
+### Inspect the stored memory in Redis Insight
+
+Redis Insight lets you inspect the database behind the memory service. Connect
+to the database used by your Iris memory store, rather than assuming the local
+application database also holds Iris memories.
+
+![Redis Insight displaying a stored support observation and its fields](images/13-redis-insight.jpg)
+
+This Redis Insight screenshot shows an **earlier fictional test observation**,
+not Emeka's new memory. It illustrates the storage fields. The app screenshots
+above are the evidence for the newly extracted memory crossing sessions.
+
+The fields worth pointing out are:
+
+| Field | What it tells you |
+| --- | --- |
+| `text` | The observation the agent can retrieve. |
+| `memory_type` | Its category, here `support_observation`. |
+| `session_id` | The conversation that produced it. |
+| `owner_id` | The customer scope used to filter recall. |
+| `attributes` | Evidence source, observation kind, and related references. |
+| `created_at` | When the stored record was created. |
+| `text_vector` | The numeric representation used for similarity search. |
+
+To inspect the exact observation from this run, filter the key browser by
+`*325a1abfc133495d9016919b9b3a8626*` and open the matching key. Confirm its
+`session_id` is `c36f32b35f0743bead1c649cce458258`. For your own run, copy the memory
+ID from the app instead. Key names and record identifiers vary by installation.
+Use this view to explain the evidence, not to manually insert a memory for the
+follow-up demonstration.
 
 ## 5. Review a change before it happens
 
