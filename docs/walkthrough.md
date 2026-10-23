@@ -6,6 +6,127 @@ settings can differ in your run. No real money moves.
 
 [Back to the README](../README.md) · [Setup instructions](../README.md#run-it-on-your-computer)
 
+## Choose your path
+
+**Presenting to a customer or business audience?** Use the 15-minute story below.
+Keep **Behind the answer** closed until you want to explain a result. Lead with
+what changes for the customer, then show the evidence if someone asks.
+
+**Exploring the architecture?** Follow the numbered sections for exact prompts,
+settings, and screenshots. Open **Behind the answer** to inspect tool calls,
+extracted observations, and timing. Redis Insight is an optional deeper look.
+
+## A 15-minute presenter story
+
+Open with:
+
+> A customer should not have to explain the same support issue every time they
+> return. We will investigate a missing savings contribution, let the customer
+> leave, and start a separate conversation to see what the assistant can carry
+> forward. We will also show what it must check again.
+
+### Before you present
+
+Start the services and check that the model, Iris, and cache verifier are
+available for the parts you plan to show. Choose a fictional customer and inspect
+their current plan, recent payments, and existing memories. Earlier runs may
+have changed the account. A new session does not reset it.
+
+Use the same customer for both visits. Have the screenshots below available if
+an external service is slow. If you use a previously extracted memory, say so.
+Do not describe it as something just created during the demonstration.
+
+### 0:00–2:00: establish what the assistant receives
+
+Use the [short-term memory example](#3-demonstrate-short-term-memory), with
+long-term memory and cache off. Send the reference word, then ask it to recall it.
+
+**Say:** “The model needs us to supply relevant context. Within this conversation,
+we can include earlier messages. Starting a new conversation changes that.”
+
+**Look for:** correct recall with history on. The controls and context panel
+explain which information was supplied. This is a context demonstration, not a
+test of whether the model can infer a customer's name from account records.
+
+### 2:00–6:00: investigate the first visit
+
+Follow [Session A](#session-a-the-customer-raises-the-issue), with both memories
+on and cache off. Let the agent identify the payment, clarify ambiguity, and
+check the services.
+
+**Say:** “A completed payment and a savings contribution are different things.
+The assistant has to establish what happened, not just produce a plausible reply.”
+
+**Look for:** a specific payment, evidence for the explanation, and a distinction
+between the plan at the time and any current settings. Do not promise the same
+number or order of tool calls on every run.
+
+If you want to show an action, use the [approval example](#5-review-a-change-before-it-happens)
+as a separate vignette. **Say:** “The assistant can propose a change. The customer
+must authorize that specific proposal, and the application checks it.” Keep this
+optional so it does not obscure the two-visit story.
+
+### 6:00–9:00: make the break visible
+
+Stop the first conversation. **Say:** “The customer has left. Recording this
+conversation is not the same as having a useful long-term memory ready.”
+
+Check extraction status. While it runs, demonstrate the
+[semantic cache](#6-reuse-a-checked-policy-answer) in a separate session with
+both memories off, or explain the evidence panel.
+
+**Say:** “For suitable general questions, we can reuse a checked policy answer.
+That is different from remembering this customer's support issue.”
+
+**Look for:** the actual answer source and both policy-tool and overall response
+time. A cache hit does not remove all model calls from the support agent.
+
+Before returning to the customer story, identify a newly extracted observation
+whose source session matches the first visit. If it is not ready, explain the
+wait rather than pretending extraction has completed.
+
+### 9:00–13:00: continue in a new conversation
+
+Return to the same customer and follow
+[Session B](#session-b-return-without-repeating-the-details). Click **New session**
+and point out the empty chat and different session identifier. Ask the follow-up
+without repeating the amount, transaction ID, or earlier diagnosis.
+
+**Say:** “This is a new conversation. The customer wants to continue the issue,
+not start the investigation from scratch.”
+
+**Look for:** relevant memories from Session A in the recall evidence, an answer
+that continues the issue, and live checks where current facts are needed.
+
+**Say:** “Memory supplies continuity. It does not make an old claim true forever,
+and it cannot authorize an account change.”
+
+Show Redis Insight only if the audience wants to see the stored observation,
+its customer scope, and the session it came from. Reading vectors or identifiers
+aloud is not necessary to tell the customer story.
+
+### 13:00–15:00: discuss value and limits
+
+**Say:** “We have demonstrated continuity across conversations and selective reuse
+of policy answers. The next question is whether that improves support outcomes.”
+
+The benefits to evaluate are less repeated explanation, fewer unnecessary checks,
+and shorter time to a correct resolution. This demo does not establish those
+benefits as measured results. Compare memory on and off across the same support
+scenarios, measuring correctness, time to resolution, repeated questions, and
+unnecessary or incorrect actions. Keep correctness as a condition for success.
+
+## If the live demo behaves differently
+
+| What happens | What to do and say |
+| --- | --- |
+| Extraction is still pending | Explain that recording and extraction are separate. Show the cache example while waiting, then check again. Use a labelled previous run if time runs out. |
+| The follow-up does not recall the issue | Check the customer, active session's long-term memory setting, extraction result, and recalled observations. A stored memory is not proof that this query retrieved it. |
+| Several transactions match | Let the assistant ask which one. Clarification is useful when the records are genuinely ambiguous. |
+| The account already has the proposed setting | Explain the current state and skip the change. Do not force an unnecessary proposal to match a script. |
+| A paraphrase misses the cache | Show the verdict. Similar wording is not sufficient if the stored answer does not safely answer the new question. |
+| A service is slow or unavailable | Show the recorded screenshots and identify them as a previous run. Do not present old timings as live measurements. |
+
 ## 1. Find your way around
 
 Open http://127.0.0.1:5173/ after starting the services. Choose a customer on the

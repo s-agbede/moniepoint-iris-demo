@@ -12,7 +12,9 @@ the support workflow and service APIs are examples built for this project.
 ## See the app
 
 Follow the [illustrated walkthrough](docs/walkthrough.md) for screenshots, prompts,
-and an explanation of what to look for at each step.
+and an explanation of what to look for at each step. Sales and solutions teams can
+start with the [15-minute presenter story](docs/walkthrough.md#a-15-minute-presenter-story),
+including talk tracks, expected outcomes, and ways to handle a different live result.
 
 ![Support studio](docs/images/01-start.jpg)
 
