@@ -139,9 +139,12 @@ application database also holds Iris memories.
 
 ![Redis Insight displaying a stored support observation and its fields](images/13-redis-insight.jpg)
 
-This Redis Insight screenshot shows an **earlier fictional test observation**,
-not Emeka's new memory. It illustrates the storage fields. The app screenshots
-above are the evidence for the newly extracted memory crossing sessions.
+This is **the same newly extracted memory** shown in the app screenshots above:
+`325a1abfc133495d9016919b9b3a8626`. Its `session_id` points to Session A
+(`c36f32b35f0743bead1c649cce458258`), and its `owner_id` is
+`moniepoint-demo-customer-004`, Emeka's scope. Its kind is `customer_report`,
+with `customer statement` as the evidence source. These matching identifiers
+connect the first conversation, the stored record, and its recall in Session B.
 
 The fields worth pointing out are:
 
